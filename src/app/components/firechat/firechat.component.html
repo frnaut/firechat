@@ -1,0 +1,19 @@
+<div class="chat-container">
+    <div class="chat">
+        <div class="mr-2" *ngFor="let chat of chats" id="chat-id">
+            <div *ngIf="firebase.user.uid == chat.uid" class="text-right ">
+                <span class="badge badge-primary">{{chat.nombre}}</span>
+                <mat-list-item role="listitem">{{chat.mensaje}}</mat-list-item>
+            </div>
+            <div *ngIf="firebase.user.uid != chat.uid" class="mr-2">
+                <span class="badge badge-success">{{chat.nombre}}</span>
+                <mat-list-item role="listitem">{{chat.mensaje}}</mat-list-item>
+            </div>
+        </div>
+    </div>   
+
+    <mat-form-field class="example-form-field mt-3 d-block">
+        <mat-label>Mensaje</mat-label>
+        <input matInput type="text" [(ngModel)]="text" (keyup.enter)="post()">
+    </mat-form-field>   
+</div>

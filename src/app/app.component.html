@@ -1,0 +1,20 @@
+<mat-toolbar class="mb-2" color="primary">
+  <span>FireChat</span>
+</mat-toolbar>
+
+<h1 class="text-center">FireChat</h1>
+
+<div *ngIf="fbService.user.uid" class="float-right">
+  <button (click)="logout()" mat-raised-button color="warn">Cerrar sesion</button>
+</div>
+
+<div *ngIf="!fbService.user.uid" class="col-md-12 d-flex justify-content-center">
+  <div>
+    <h2 >Iniciar sesion</h2>
+      <button (click)="login('google')" mat-raised-button color="primary">Google</button>
+  </div>
+</div>
+
+<div *ngIf="fbService.user.uid" class="d-flex justify-content-center mt-2">
+  <app-firechat></app-firechat>
+</div>
